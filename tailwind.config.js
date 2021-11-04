@@ -5,10 +5,15 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    colors: {
+
+    },
     fontFamily: {
       sans: ['Quicksand', 'sans-serif']
     },
-    extend: {},
+    extend: {
+
+    },
   },
   variants: {
     extend: {},
