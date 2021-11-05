@@ -5,14 +5,18 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    colors: {
-
-    },
     fontFamily: {
       sans: ['Quicksand', 'sans-serif']
     },
     extend: {
-
+      width: {
+        '1/5': '20%',
+        '3/5': '60%'
+      },
+      colors: {
+        'brown-soft': '#6B4F4F',
+        'cream-skin': '#EED6C4'
+      }
     },
   },
   variants: {
