@@ -24,7 +24,9 @@ class SearchBar extends HTMLElement {
 
   render() {
     this.shadowDOM.innerHTML = `
-      <link rel="stylesheet" href="../style.css" type="text/css">
+      <style>
+        @import "../style.css"
+      </style>
       <section id="search-component" class="flex flex-row justify-center w-full mt-8">
         <input id="search-field" type="search" class="p-4 w-3/5 font-bold rounded-tl-xl rounded-bl-xl focus:outline-none text-black" placeholder="Search your meal here..." />
         <button id="search-button" type="submit" class="p-4 font-bold bg-brown-soft rounded-tr-xl rounded-br-xl">
