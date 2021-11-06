@@ -1,12 +1,22 @@
 import "../component/search-bar.js";
 import "../component/meals-list.js";
+import "../component/detail-section"
 import MealsData from "../data/MealsData";
 
 const main = () => {
   const searchElement = document.querySelector("search-bar");
   const mealListElement = document.querySelector("meals-list");
   const mealItemElement = document.querySelector("meal-item");
+  const detailSectionElement = document.querySelector("detail-section");
   const resultTextTemplate = document.querySelector("#result-template");
+
+  const renderResult = results => {
+    mealListElement.meals = results;
+  }
+
+  const renderSingleMeal = result => {
+    detailSectionElement.mealsdetail = result;
+  }
 
   const onSearchClicked = async () => {
     try {
@@ -19,6 +29,7 @@ const main = () => {
       }
     }
     catch (err) {
+      resultTextTemplate.innerText = "";
       alert(err)
     }
   }
@@ -33,25 +44,20 @@ const main = () => {
     }
   }
 
-  const onItemClicked = async () => {
-    const mealInfo = e.target;
-    if (mealInfo.classList.contains('meal-info')) {
-      const mealID = mealInfo.getAttribute('data-mealID');
+  const onItemClicked = async (e) => {
+    try {
+      const mealID = e.target.getAttribute("data-mealID");
+      const result = await MealsData.mealDetail(mealID);
+      renderSingleMeal(result)
+    }
+    catch (err) {
+      console.log(err)
     }
   }
 
   searchElement.onSearch = onSearchClicked;
   searchElement.randomSearch = randomSearchClicked;
-  mealItemElement.itemClick = onItemClicked;
-
-  const renderResult = results => {
-    mealListElement.meals = results;
-  }
-
-  const renderSingleMeal = async mealID => {
-    const result = await MealsData.mealDetail();
-
-  }
+  mealListElement.itemClick = onItemClicked;
 }
 
 export default main;

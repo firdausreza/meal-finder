@@ -11,6 +11,11 @@ class MealsList extends HTMLElement {
     this.render()
   }
 
+  set itemClick(event) {
+    this._itemClick = event;
+    this.render();
+  }
+
   render() {
     this.shadowDOM.innerHTML = `
       <style>
@@ -25,6 +30,7 @@ class MealsList extends HTMLElement {
       mealItemElement.meal = meal;
       this.shadowDOM.querySelector("#list-component").appendChild(mealItemElement);
     });
+    this.shadowDOM.querySelector("#list-component").addEventListener("click", this._itemClick);
   }
 }
 
