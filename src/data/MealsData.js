@@ -10,6 +10,12 @@ class MealsData {
     const data = await res.json();
     return data.meals;
   }
+
+  static async mealData() {
+    const res = await fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}");
+    const data = await res.json();
+    return data.meals;
+  }
 }
 
 export default MealsData;

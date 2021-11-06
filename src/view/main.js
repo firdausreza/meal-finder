@@ -5,6 +5,7 @@ import MealsData from "../data/MealsData";
 const main = () => {
   const searchElement = document.querySelector("search-bar");
   const mealListElement = document.querySelector("meals-list");
+  const mealItemElement = document.querySelector("meal-item");
   const resultTextTemplate = document.querySelector("#result-template");
 
   const onSearchClicked = async () => {
@@ -32,12 +33,24 @@ const main = () => {
     }
   }
 
+  const onItemClicked = async () => {
+    const mealInfo = e.target;
+    if (mealInfo.classList.contains('meal-info')) {
+      const mealID = mealInfo.getAttribute('data-mealID');
+    }
+  }
+
   searchElement.onSearch = onSearchClicked;
   searchElement.randomSearch = randomSearchClicked;
+  mealItemElement.itemClick = onItemClicked;
 
   const renderResult = results => {
     mealListElement.meals = results;
   }
+
+  // const renderSingleMeal = async mealID => {
+  //   const result = await MealsData.
+  // }
 }
 
 export default main;
