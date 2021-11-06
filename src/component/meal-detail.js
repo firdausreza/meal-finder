@@ -26,3 +26,5 @@ class MealDetail extends HTMLElement {
     `
   }
 }
+
+customElements.define("meal-detail", MealDetail);

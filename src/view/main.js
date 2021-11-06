@@ -48,9 +48,10 @@ const main = () => {
     mealListElement.meals = results;
   }
 
-  // const renderSingleMeal = async mealID => {
-  //   const result = await MealsData.
-  // }
+  const renderSingleMeal = async mealID => {
+    const result = await MealsData.mealDetail();
+
+  }
 }
 
 export default main;
