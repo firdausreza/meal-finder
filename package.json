@@ -34,6 +34,7 @@
     "mini-css-extract-plugin": "^2.4.3",
     "postcss": "^8.3.11",
     "postcss-loader": "^6.2.0",
-    "tailwindcss": "^2.2.19"
+    "tailwindcss": "^2.2.19",
+    "twind": "^0.16.16"
   }
 }
