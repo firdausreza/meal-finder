@@ -8,6 +8,7 @@ class SearchBar extends HTMLElement {
   constructor() {
     super();
     this.shadowDOM = this.attachShadow({mode: "open"});
+    this.shadowRoot.adoptedStyleSheets = [sheet.target];
   }
 
   connectedCallback() {
@@ -28,19 +29,14 @@ class SearchBar extends HTMLElement {
     return this.shadowDOM.querySelector('#search-field').value;
   }
 
-  static styles = [sheet.target];
-
   render() {
     this.shadowDOM.innerHTML = `
-      <style>
-        @import "../style.css"
-      </style>
       <section id="search-component" class="${tw`flex flex-row justify-center w-full mt-8`}">
         <input id="search-field" type="search" class="${tw`p-4 w-3/5 font-bold rounded-tl-xl rounded-bl-xl focus:outline-none text-black`}" placeholder="Search your meal here..." />
-        <button id="search-button" type="submit" class="${tw`p-4 font-bold bg-brown-soft rounded-tr-xl rounded-br-xl`}">
+        <button id="search-button" type="submit" class="${tw`p-4 font-bold bg-green-400 rounded-tr-xl rounded-br-xl`}">
           Search
         </button>
-        <button type="submit" id="randomize" class="${tw`ml-4 p-4 font-bold text-brown-soft rounded-xl bg-cream-skin`}">
+        <button type="submit" id="randomize" class="${tw`ml-4 p-4 font-bold text-brown-soft rounded-xl bg-yellow-200`}">
           Random
         </button>
       </section>
