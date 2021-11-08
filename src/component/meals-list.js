@@ -1,9 +1,15 @@
 import "./meal-item.js"
+import {cssomSheet, create} from "twind";
+
+const sheet = cssomSheet({target: new CSSStyleSheet()});
+
+const { tw } = create({sheet});
 
 class MealsList extends HTMLElement {
   constructor() {
     super();
     this.shadowDOM = this.attachShadow({mode: "open"});
+    this.shadowRoot.adoptedStyleSheets = [sheet.target];
   }
 
   set meals(meals) {
@@ -18,10 +24,7 @@ class MealsList extends HTMLElement {
 
   render() {
     this.shadowDOM.innerHTML = `
-      <style>
-        @import "../style.css"
-      </style>
-      <section id="list-component" class="grid grid-cols-4 gap-6 mt-8 justify-items-center text-center">
+      <section id="list-component" class="${tw`grid grid-cols-4 gap-6 mt-8 justify-items-center text-center`}">
         
       </section>
     `;

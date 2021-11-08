@@ -1,9 +1,15 @@
-import "./meal-detail"
+import "./meal-detail";
+import {cssomSheet, create} from "twind";
+
+const sheet = cssomSheet({target: new CSSStyleSheet()});
+
+const { tw } = create({sheet});
 
 class DetailSection extends HTMLElement {
   constructor() {
     super();
     this.shadowDOM = this.attachShadow({mode: "open"});
+    this.shadowRoot.adoptedStyleSheets = [sheet.target];
   }
 
   set mealsdetail(meal) {
@@ -13,10 +19,7 @@ class DetailSection extends HTMLElement {
 
   render() {
     this.shadowDOM.innerHTML = `
-      <style>
-        @import "../style.css"
-      </style>
-      <section id="meal-detail" class="mt-8 w-full p-4 flex flex-col items-center justify-center">
+      <section id="meal-detail" class="${tw`mt-8 w-full p-4 flex flex-col items-center justify-center`}">
         
       </section>
     `;
